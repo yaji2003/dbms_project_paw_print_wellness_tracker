@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <br>
+            <h4 class="text-center bg-success text-white"> Health Record Details</h4>
+            <br>
+            <br>
+
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <form action="/health_record" method="post">
+                <div class="mb-3">
+                    <label for="health_record_id" class="form-label">Health Record ID</label>
+                    <input type="text" class="form-control" id="health_record_id" name="health_record_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pet_id" class="form-label">Pet ID</label>
+                    <input type="text" class="form-control" id="pet_id" name="pet_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="vaccination" class="form-label">Vaccination</label>
+                    <input type="text" class="form-control" id="vaccination" name="vaccination" required>
+                </div>
+                <div class="mb-3">
+                    <label for="medication" class="form-label">Medication</label>
+                    <input type="text" class="form-control" id="medication" name="medication" required>
+                </div>
+                <div class="mb-3">
+                    <label for="medical_history" class="form-label">Medical History</label>
+                    <textarea class="form-control" id="medical_history" name="medical_history" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock body %}
