@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <br>
+            <h4 class="text-center bg-success text-white"> Nutrition Diet Details</h4>
+            <br>
+            <br>
+
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <form action="/nutrition_diet" method="post">
+                <div class="mb-3">
+                    <label for="nutrition_diet_id" class="form-label">Nutrition Diet ID</label>
+                    <input type="text" class="form-control" id="nutrition_diet_id" name="nutrition_diet_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pet_id" class="form-label">Pet ID</label>
+                    <input type="text" class="form-control" id="pet_id" name="pet_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="diet_plan" class="form-label">Diet Plan</label>
+                    <textarea class="form-control" id="diet_plan" name="diet_plan" rows="4" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="requirement" class="form-label">Requirement</label>
+                    <textarea class="form-control" id="requirement" name="requirement" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock body %}
